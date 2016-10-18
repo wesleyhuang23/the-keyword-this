@@ -2,10 +2,12 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
+      //to take the place of an object.
 
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+      //Explicit, implicit, global, window
 
   // 3) What is the difference between call and apply?
 
@@ -24,6 +26,14 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
+    var user = {username: "wesleyhuang23",
+                email: "wesleyhuang23@gmail.com",
+                getUsername: function(){
+                  return this.username;
+                }
+              };
+
+              user.getUsername();
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
@@ -32,6 +42,15 @@
 
 
 // Write the function definitions which will make the following function invocations function properly.
+  var Car = function(make, model, year){
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.move = 10;
+    this.moveCar = function(){this.move = this.move + 10;
+    return this.move; };
+    return this;
+  };
 
   //Function Invocations Here
 
@@ -55,6 +74,7 @@ var getYear = function(){
 
 //Note(no tests)
   //Code Here
+ getYear.apply();
 
 
 //New Problem
@@ -69,14 +89,16 @@ var getMyUsername = function() {
  return this.username;
 };
 
-var userName = getMyUsername(); //Fix this
+var userName = getMyUsername.apply(myUser); //Fix this
 
 //Above you're given an object, and  a function. What will the getUsername function return?
 //Note(no tests)
   //Answer Here
+  //iliketurtles
 
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
   //Answer Here
+  //myUser
 
 //Fix the getMyUsername invocation so that userName will be equal to 'iliketurtles'.
